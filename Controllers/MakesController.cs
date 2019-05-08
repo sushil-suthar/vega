@@ -28,13 +28,19 @@ namespace vega.Controllers
         public async Task<IEnumerable<MakeResource>> GetMakes()
         {
             var makes = await dbContext.Makes.Include(m => m.Models).ToListAsync();
-            return mapper.Map<List<Make>, List<MakeResource>>(makes);
+            var makesResource = new List<MakeResource>();
+            foreach (var item in makes)
+            {
+                makesResource.Add(new MakeResource(item));
+            }
+            return makesResource;
+            Console.WriteLine("a", "a");
         }
         [HttpGet("/api/features")]
         public async Task<IEnumerable<Features>> GetFeatures()
         {
             var features = await dbContext.Features.ToListAsync();
-            return features;
+            return features; ;
         }
     }
 }

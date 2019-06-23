@@ -34,7 +34,6 @@ namespace vega.Controllers
                 makesResource.Add(new MakeResource(item));
             }
             return makesResource;
-            Console.WriteLine("a", "a");
         }
         [HttpGet("/api/features")]
         public async Task<IEnumerable<Features>> GetFeatures()
